@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.jucyzhang.flappybatta"
+    android:versionCode="9"
+    android:versionName="2.3" >
+
+    <uses-sdk
+        android:minSdkVersion="9"
+        android:targetSdkVersion="19" />
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    
+    
+        <permission
+android:name="com.jucyzhang.flappybatta.permission.C2D_MESSAGE"
+android:protectionLevel="signature" />
+<uses-permission android:name="com.jucyzhang.flappybatta.permission.C2D_MESSAGE" />
+
+   
+	<uses-permission android:name="android.permission.GET_ACCOUNTS" />
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    
+    
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.jucyzhang.flappybatta.GameActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        
+        <receiver android:name="com.google.android.gcm.GCMBroadcastReceiver" 
+            android:permission="com.google.android.c2dm.permission.SEND" >
+
+		<intent-filter>
+			<action android:name="com.google.android.c2dm.intent.RECEIVE" />
+			<action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+        	<category android:name="com.jucyzhang.flappybatta" />
+		</intent-filter>
+		</receiver>
+        
+        
+        
+        
+
+        <service
+            android:name="com.umeng.common.net.DownloadingService"
+            android:process=":DownloadingService" >
+        </service>
+
+        <activity
+            android:name="com.umeng.update.UpdateDialogActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+        </activity>
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="5304d98756240b6faf12b8df" />
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="mumu" />
+        
+        <service android:name=".GCMIntentService" />
+    </application>
+
+    
+    
+    
+</manifest>
