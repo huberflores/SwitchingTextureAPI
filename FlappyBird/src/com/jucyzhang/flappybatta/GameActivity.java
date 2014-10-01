@@ -131,7 +131,7 @@ public class GameActivity extends Activity implements Callback, OnClickListener 
 
   }
   
-  
+   
   
 
   @Override
@@ -355,15 +355,15 @@ public class GameActivity extends Activity implements Callback, OnClickListener 
           blockerCount++;
         }
         if (ENABLE_COIN) {
-          if (coinCount > NEW_COIN_COUNT) {
+          if (coinCount > NEW_COIN_COUNT) {  
             coinCount = 0;
             
             
-            if (CommonUtilities.switchAd==false){
+            if (CommonUtilities.switchAd==true){
             	CoinSprite sprite = new CoinSprite(getBaseContext(), coin);
             	sprites.addFirst(sprite);
             }else{
-            	CoinSprite sprite = new CoinSprite(getBaseContext(), ad);
+            	CoinSprite sprite = new CoinSprite(getBaseContext(), ad); 
             	sprites.addFirst(sprite);
             }
      
